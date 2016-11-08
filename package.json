@@ -1,6 +1,6 @@
 {
   "name": "get-w2v-google-news-neighbors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets nearest neighbors for given words based on a word2vec model trained on Google News.",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "lodash.compact": "^3.0.1",
     "lodash.pluck": "^3.1.2",
     "request": "^2.78.0",
-    "call-next-tick": "^1.1.2",    
+    "call-next-tick": "^1.1.2",
     "standard-bail": "^2.0.1"
   }
 }

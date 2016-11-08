@@ -92,7 +92,16 @@ var cases = [
     words: ['promenade', 'spittal'],
     expected: [ 'promenades', 'seafront', 'quay', 'piazza', 'quayside', 'quays', 'seafront promenade', 'roof terrace', 'pavement cafés', 'cobblestone lanes' ],
     nounWordsOnly: false
-  }
+  },
+
+  {
+    name: 'No sampling',
+    seed: 'no-sampling',
+    words: ['magic', 'fire', 'cloud'],
+    expected: [ 'blazing', 'dominoed', 'avalance', 'downpour', 'jubiliation', 'drizzling', 'scorching', 'palm trees swayed', 'lurks ominously', 'lurking menacingly', 'cheers resounded' ],
+    nounWordsOnly: false,
+    doNotSample: true
+  },
 ];
 
 var nounfinder = createNounfinder({
@@ -117,7 +126,8 @@ function runTest(testCase) {
       }),
       wordnok: wordnok,
       nounLikePhrasesOnly: true,
-      nounWordsOnly: testCase.nounWordsOnly
+      nounWordsOnly: testCase.nounWordsOnly,
+      doNotSample: testCase.doNotSample
     });
     getWord2VecNeighbors(testCase.words, checkNeighbors);
 

@@ -27,7 +27,13 @@ var badPhraseEnds = [
 ];
 
 function GetWord2VecNeighbors({
-  gnewsWord2VecURL, nounfinder, probable, wordnok, nounLikePhrasesOnly, nounWordsOnly
+  gnewsWord2VecURL,
+  nounfinder,
+  probable,
+  wordnok,
+  nounLikePhrasesOnly,
+  nounWordsOnly,
+  doNotSample
 }) {
 
   var isVerb = IsVerb({
@@ -37,9 +43,15 @@ function GetWord2VecNeighbors({
   return getWord2VecNeighbors;
 
   function getWord2VecNeighbors(words, done) {
-    var wordsToGetNeighborsOf = probable.sample(
-      words, probable.rollDie(words.length)
-    );
+    var wordsToGetNeighborsOf;
+    if (doNotSample) {
+      wordsToGetNeighborsOf = words;
+    }
+    else {
+      var sampleSize = probable.rollDie(words.length);
+      wordsToGetNeighborsOf = probable.sample(words, sampleSize);
+    }
+    console.log(wordsToGetNeighborsOf);
 
     var opts = {
       method: 'GET',
@@ -64,7 +76,6 @@ function GetWord2VecNeighbors({
     var normalWords = [];
 
     words.forEach(putWordInBucket);
-debugger;
     phrases = phrases.filter(phraseIsOK);
 
     if (nounWordsOnly) {

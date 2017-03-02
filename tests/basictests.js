@@ -102,6 +102,24 @@ var cases = [
     nounWordsOnly: false,
     doNotSample: true
   },
+
+  {
+    name: 'No ** neighbors',
+    seed: '**',
+    words: ['crazy', 'stupid'],
+    nounWordsOnly: false,
+    expected: [
+      'dumb',
+      'insane',
+      'weird',
+      'scarey',
+      'freaky',
+      'dumbest',
+      'wacko',
+      'wacky',
+      'scared shitless'
+    ]
+  }
 ];
 
 var nounfinder = createNounfinder({

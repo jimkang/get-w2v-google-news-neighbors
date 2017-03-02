@@ -151,10 +151,6 @@ function GetWord2VecNeighbors({
   }
 }
 
-function longerThanTwoChars(w) {
-  return w && w.length > 2;
-}
-
 function replaceUnderscores(w) {
   return w.replace(underscoreRegex, ' ');
 }
@@ -165,7 +161,8 @@ function wordIsOK(word) {
 
 function phraseIsOK(phrase) {
   return !badPhraseStarts.some(startsWith) &&
-    !badPhraseEnds.some(endsWith);
+    !badPhraseEnds.some(endsWith) &&
+    phrase.indexOf('*') === -1;
 
   function startsWith(badStart) {
     return phrase.startsWith(badStart);

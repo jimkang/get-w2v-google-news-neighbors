@@ -119,6 +119,14 @@ var cases = [
       'wacky',
       'scared shitless'
     ]
+  },
+
+  {
+    name: 'No web sites',
+    seed: '**',
+    words: ['news', 'brand'],
+    nounWordsOnly: false,
+    expected: []
   }
 ];
 

@@ -8,6 +8,7 @@ var callNextTick = require('call-next-tick');
 
 var underscoreRegex = /_/g;
 var uppercaseRegex = /[A-Z]/g;
+var dotcomRegex = /[^\s]+\.[^\s]+/;
 
 var badPhraseStarts = [
   'TO_',
@@ -156,7 +157,8 @@ function replaceUnderscores(w) {
 }
 
 function wordIsOK(word) {
-  return word && word.length > 2 && !word.match(uppercaseRegex);
+  return word && word.length > 2 &&
+    !word.match(uppercaseRegex) && !word.match(dotcomRegex);
 }
 
 function phraseIsOK(phrase) {
